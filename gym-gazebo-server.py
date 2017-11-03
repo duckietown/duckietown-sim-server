@@ -82,7 +82,7 @@ while True:
 
     if msg['command'] == 'reset':
         print('resetting the simulation')
-        reset_proxy()
+        #reset_proxy()
         # let it stabilize # temporary fix for duckiebot being too low
         unpause()
         time.sleep(1)
