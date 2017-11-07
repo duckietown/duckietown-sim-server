@@ -8,6 +8,7 @@ from cv_bridge import CvBridge, CvBridgeError
 from geometry_msgs.msg import Twist
 import gazebo_ros
 from sensor_msgs.msg import Image, CompressedImage
+from nav_msgs.msg import Odometry
 from std_srvs.srv import Empty
 import numpy as np
 
@@ -56,10 +57,21 @@ class ImageStuff():
         else:
             #
             # cv2.imwrite('camera_image.jpeg', cv2_img)
-
             self.last_good_img = cv2_img
 
+class OdomData():
+    def __init__(self):
+        self.position = (0, 0 ,0)
+        self.orientation = (0, 0, 0, 0)
+
+    def odom_callback(self, msg):
+        pos = msg.pose.pose.position
+        quat = msg.pose.pose.orientation
+        self.position = (pos.x, pos.y, pos.z)
+        self.orientation = (quat.x, quat.y, quat.z, quat.w)
+
 imagestuff = ImageStuff()
+odom_data = OdomData()
 
 rospy.init_node('gym', anonymous=True)
 vel_pub = rospy.Publisher('/cmd_vel', Twist, queue_size=5)
@@ -68,11 +80,10 @@ pause = rospy.ServiceProxy('/gazebo/pause_physics', Empty)
 reset_proxy = rospy.ServiceProxy('/gazebo/reset_world', Empty)
 image_topic = "/duckiebot/camera1/image_raw"
 img_sub = rospy.Subscriber(image_topic, Image, imagestuff.image_callback)
-
+odom_sub = rospy.Subscriber('odom', Odometry, odom_data.odom_callback)
 
 # waiting for ROS to connect... TODO solve this with ROS callback
 time.sleep(2)
-
 
 while True:
     print('Waiting for a command')
@@ -109,33 +120,18 @@ while True:
     else:
         assert False, "unknown command"
 
-    # TODO: fill in this data
     # Send world position data, etc
     # Note: the Gym client needs this to craft a reward function
     socket.send_json(
         {
             # XYZ position
-            "position": [0, 0, 0],
+            "position": odom_data.position,
 
-            # Are we properly sitting inside our lane?
-            "inside_lane": True,
-
-            # Are we colliding with a building or other car?
-            "colliding": False,
+            # XYZW quaternion
+            "orientation": odom_data.orientation
         },
         flags=zmq.SNDMORE
     )
-
-    # # Send a camera frame
-    # img = numpy.ndarray(shape=IMG_SHAPE, dtype='uint8')
-    #
-    # # Note: image is encoded in RGB format
-    # # Coordinates (0,0) are at the top-left corner
-    # for j in range(0, CAMERA_HEIGHT):
-    #     for i in range(0, CAMERA_WIDTH):
-    #         img[j, i, 0] = j # R
-    #         img[j, i, 1] = i # G
-    #         img[j, i, 2] = 0 # B
 
     # only resize when we need
     img = cv2.resize(imagestuff.last_good_img, (CAMERA_WIDTH, CAMERA_HEIGHT))
