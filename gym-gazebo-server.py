@@ -45,7 +45,7 @@ class ImageStuff():
         self.last_good_img = None
 
     def image_callback(self, msg):
-        print("Received an image!")
+        # print("Received an image!")
         # setattr(msg, 'encoding', '')
 
         try:
@@ -73,6 +73,9 @@ img_sub = rospy.Subscriber(image_topic, Image, imagestuff.image_callback)
 # waiting for ROS to connect... TODO solve this with ROS callback
 time.sleep(2)
 
+def reset_alt():
+    print ("TODO: RESETTING NOT IMPLEMENTED YET")
+    pass
 
 while True:
     print('Waiting for a command')
@@ -82,7 +85,8 @@ while True:
 
     if msg['command'] == 'reset':
         print('resetting the simulation')
-        #reset_proxy()
+        # reset_proxy()
+        reset_alt()
         # let it stabilize # temporary fix for duckiebot being too low
         unpause()
         time.sleep(1)
