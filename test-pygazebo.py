@@ -7,6 +7,8 @@ import pygazebo.msg.gz_string_pb2
 import pygazebo.msg.poses_stamped_pb2
 
 
+# DISCLAIMER: I COULDN'T GET THIS RUBBISH TO WORK, TRY test-rosgazebo.py INSTEAD
+
 class PrintHandler(logging.Handler):
     def emit(self, record):
         print("LOG:", dir(record))

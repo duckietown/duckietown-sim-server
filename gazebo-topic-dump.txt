@@ -1,0 +1,498 @@
+name: ['ground_plane', 'road_diag', 'road_inter', 'road_plane_3', 'road_plane_3_0', 'road_plane_3_1', 'road_plane', 'road_plane_0', 'road_plane_1', 'road_diag_0', 'road_plane_2', 'road_plane_3_3', 'road_diag_1', 'road_diag_2', 'duck', 'jersey_barrier', 'House 2', 'gazebo_duck', 'jersey_barrier_0', 'jersey_barrier_0_clone', 'jersey_barrier_0_clone_0', 'jersey_barrier_0_clone_1', 'duck_0', 'duck_1', 'duck_2', 'mybot']
+pose:
+  -
+    position:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  -
+    position:
+      x: -1.0
+      y: 0.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: -0.707108079859
+      w: 0.707105482511
+  -
+    position:
+      x: 0.0
+      y: 1.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  -
+    position:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  -
+    position:
+      x: -1.0
+      y: 1.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.707108079859
+      w: 0.707105482511
+  -
+    position:
+      x: 1.0
+      y: 1.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: -0.707108079859
+      w: 0.707105482511
+  -
+    position:
+      x: 0.0
+      y: 0.5
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.707108079859
+      w: 0.707105482511
+  -
+    position:
+      x: -0.5
+      y: 1.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  -
+    position:
+      x: 0.507887
+      y: 1.00964
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  -
+    position:
+      x: 1.0
+      y: 0.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  -
+    position:
+      x: 0.0
+      y: 1.5
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.707108079859
+      w: 0.707105482511
+  -
+    position:
+      x: 0.0
+      y: 2.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  -
+    position:
+      x: 1.0
+      y: 2.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.707108079859
+      w: 0.707105482511
+  -
+    position:
+      x: -1.0
+      y: 2.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.999999999999
+      w: 1.32679489668e-06
+  -
+    position:
+      x: -0.65511937119
+      y: 0.62465879598
+      z: 0.00642730003456
+    orientation:
+      x: 0.0617924758842
+      y: 0.0111229893513
+      z: 0.997856988292
+      w: -0.01842281057
+  -
+    position:
+      x: 0.509036
+      y: 1.72003
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  -
+    position:
+      x: 0.453139
+      y: 0.488156
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  -
+    position:
+      x: -3.59696993433
+      y: -0.163894985717
+      z: -0.0830401205286
+    orientation:
+      x: 0.629827230491
+      y: 0.322195301857
+      z: 0.32172460759
+      w: 0.62928620203
+  -
+    position:
+      x: -0.001507
+      y: 2.27294
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  -
+    position:
+      x: 0.0
+      y: -0.25
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  -
+    position:
+      x: 1.2504
+      y: 1.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.709649072043
+      w: 0.704555316884
+  -
+    position:
+      x: -1.25
+      y: 1.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.709649072043
+      w: 0.704555316884
+  -
+    position:
+      x: -0.393048909704
+      y: 0.598857157155
+      z: 0.00628791493334
+    orientation:
+      x: -0.0169610005104
+      y: -0.0247068716111
+      z: -0.558719465672
+      w: 0.828815090135
+  -
+    position:
+      x: -0.40613843112
+      y: 0.379486822875
+      z: 0.00624460683901
+    orientation:
+      x: -0.0043142314638
+      y: -0.0266371388194
+      z: -0.00190204495696
+      w: 0.999634049274
+  -
+    position:
+      x: -0.571574064923
+      y: 0.500390757595
+      z: 0.00627065231017
+    orientation:
+      x: -0.0100390596088
+      y: -0.0435850222719
+      z: 0.557741438779
+      w: 0.828808814254
+  -
+    position:
+      x: 0.890618334292
+      y: 0.937244558806
+      z: 0.034487951144
+    orientation:
+      x: -0.00294182897182
+      y: -0.00223734843733
+      z: 0.778214397114
+      w: -0.627987812015
+twist:
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: -0.000682741352149
+      y: -0.000982395601403
+      z: 0.000142473147641
+    angular:
+      x: 0.157469764902
+      y: -0.176310723948
+      z: 0.0729313045225
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    angular:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  -
+    linear:
+      x: -0.00404657851845
+      y: -0.0205110597528
+      z: -0.00309592795941
+    angular:
+      x: 0.105313949065
+      y: -0.115727290542
+      z: 0.430578067205
+---
