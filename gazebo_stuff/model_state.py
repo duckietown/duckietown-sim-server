@@ -1,4 +1,4 @@
-import yaml
+import numpy as np
 
 
 class Coord():
@@ -24,7 +24,7 @@ class Twist():
     angular = Coord()
 
 
-class State():
+class State(object):
     model_name = ""
     pose = Pose()
     twist = Twist()
@@ -77,3 +77,27 @@ class State():
                 self.reference_frame
             )
         )
+
+    @staticmethod
+    def get_state(fn, model, ref):
+        service_response = fn(model, ref)
+        state = State.from_get_state(service_response, model, ref)
+
+        return state
+
+    def get_array(self):
+        return np.array([
+            self.pose.position.x,
+            self.pose.position.y,
+            self.pose.position.z,
+            self.pose.orientation.x,
+            self.pose.orientation.y,
+            self.pose.orientation.z,
+            self.pose.orientation.w,
+            self.twist.linear.x,
+            self.twist.linear.y,
+            self.twist.linear.z,
+            self.twist.angular.x,
+            self.twist.angular.y,
+            self.twist.angular.z,
+        ])

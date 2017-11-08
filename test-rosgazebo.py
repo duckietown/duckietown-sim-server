@@ -36,10 +36,7 @@ unpause()
 time.sleep(.1)
 # get data of "mybot" model in reference to frame "world"
 # in production we can substitute this to the origin of the duckietown world
-service_response = get_state("mybot", "world")
-# TODO parse output as YAML, extract values and write to State object
-# print (service_response)
-old_state = State.from_get_state(service_response, "mybot", "world")
+old_state = State.get_state(get_state, "mybot", "world")
 print (old_state)
 
 new_state = State.make(model="mybot",

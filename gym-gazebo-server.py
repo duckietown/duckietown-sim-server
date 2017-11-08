@@ -5,8 +5,11 @@ import numpy
 import time
 import rospy
 from cv_bridge import CvBridge, CvBridgeError
+from gazebo_msgs.srv import GetModelState, SetModelState
+from gazebo_stuff.model_state import State
 from geometry_msgs.msg import Twist
 import gazebo_ros
+import json
 from sensor_msgs.msg import Image, CompressedImage
 from std_srvs.srv import Empty
 import numpy as np
@@ -68,9 +71,12 @@ rospy.init_node('gym', anonymous=True)
 vel_pub = rospy.Publisher('/cmd_vel', Twist, queue_size=5)
 unpause = rospy.ServiceProxy('/gazebo/unpause_physics', Empty)
 pause = rospy.ServiceProxy('/gazebo/pause_physics', Empty)
-reset_proxy = rospy.ServiceProxy('/gazebo/reset_world', Empty)
+# reset_proxy = rospy.ServiceProxy('/gazebo/reset_world', Empty)
+get_state_proxy = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
+set_state_proxy = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
 image_topic = "/duckiebot/camera1/image_raw"
 img_sub = rospy.Subscriber(image_topic, Image, imagestuff.image_callback)
+
 
 # waiting for ROS to connect... TODO solve this with ROS callback
 time.sleep(2)
@@ -94,6 +100,7 @@ while True:
         # let it stabilize # temporary fix for duckiebot being too low
         unpause()
         time.sleep(1)
+        state = State.get_state(get_state_proxy, "mybot", "world")
         pause()
 
     elif msg['command'] == 'action':
@@ -112,6 +119,7 @@ while True:
 
         vel_pub.publish(vel_cmd)
         unpause()
+        state = State.get_state(get_state_proxy, "mybot", "world")
         time.sleep(.05)  # this is hacky as fuck
         pause()
     else:
@@ -122,8 +130,7 @@ while True:
     # Note: the Gym client needs this to craft a reward function
     socket.send_json(
         {
-            # XYZ position
-            "position": [0, 0, 0],
+            "state": state.get_array().tolist(),
 
             # Are we properly sitting inside our lane?
             "inside_lane": True,
