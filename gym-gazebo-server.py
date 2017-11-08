@@ -93,9 +93,20 @@ odom_sub = rospy.Subscriber('odom', Odometry, odom_data.odom_callback)
 # waiting for ROS to connect... TODO solve this with ROS callback
 time.sleep(2)
 
+# Store the initial robot state
+init_state = State.get_state(get_state_proxy, "mybot", "world")
+
 def reset_alt():
     print ("TODO: RESETTING NOT IMPLEMENTED YET")
-    pass
+
+    set_state_proxy(init_state)
+
+    vel_cmd = Twist()
+    vel_cmd.linear.x =0
+    vel_cmd.angular.z = 0
+
+    vel_pub.publish(vel_cmd)
+
 
 while True:
     print('Waiting for a command')
