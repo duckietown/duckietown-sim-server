@@ -38,9 +38,11 @@ time.sleep(.1)
 # in production we can substitute this to the origin of the duckietown world
 service_response = get_state("mybot", "world")
 # TODO parse output as YAML, extract values and write to State object
-print (service_response)
+# print (service_response)
+old_state = State.from_get_state(service_response, "mybot", "world")
+print (old_state)
 
-new_state = State(model="mybot",
+new_state = State.make(model="mybot",
                   position=[random.uniform(-1, 2), random.uniform(-1, 2), 2],  # spawn at height for demo
                   orientation=[0, 1, 0, 0],
                   linear=[2, 0, 0],
@@ -50,8 +52,6 @@ new_state = State(model="mybot",
 set_state(new_state)
 time.sleep(.1)
 
-service_response = get_state("mybot", "world")
-print (service_response)
 
 pause()
 
