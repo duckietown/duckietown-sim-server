@@ -4,6 +4,7 @@ import rospy
 import time
 
 from gazebo_msgs.srv import GetModelState, SetModelState
+from gazebo_stuff.model_state import State
 from geometry_msgs.msg import Twist
 from std_srvs.srv import Empty
 
@@ -16,57 +17,6 @@ class Model():
     def state_callback(self, msg):
         print (msg)
         self.last_state = msg
-
-
-class Coord():
-    x = 0
-    y = 0
-    z = 0
-
-
-class Quat():
-    x = 0
-    y = 0
-    z = 0
-    w = 0
-
-
-class Pose():
-    position = Coord()
-    orientation = Quat()
-
-
-class Twist():
-    linear = Coord()
-    angular = Coord()
-
-
-class State():
-    model_name = ""
-    pose = Pose()
-    twist = Twist()
-    reference_frame = "world"
-
-    def __init__(self, model, position, orientation, linear, angular, ref):
-        self.model_name = model
-        self.reference_frame = ref
-
-        self.pose.position.x, \
-        self.pose.position.y, \
-        self.pose.position.z = position
-
-        self.pose.orientation.x, \
-        self.pose.orientation.y, \
-        self.pose.orientation.z, \
-        self.pose.orientation.w = orientation
-
-        self.twist.linear.x, \
-        self.twist.linear.y, \
-        self.twist.linear.z = linear
-        
-        self.twist.angular.x, \
-        self.twist.angular.y, \
-        self.twist.angular.z = angular
 
 
 model = Model()
@@ -87,11 +37,11 @@ time.sleep(.1)
 # get data of "mybot" model in reference to frame "world"
 # in production we can substitute this to the origin of the duckietown world
 service_response = get_state("mybot", "world")
-#TODO parse output as YAML, extract values and write to State object
+# TODO parse output as YAML, extract values and write to State object
 print (service_response)
 
 new_state = State(model="mybot",
-                  position=[random.uniform(-1, 2), random.uniform(-1, 2), 2], # spawn at height for demo
+                  position=[random.uniform(-1, 2), random.uniform(-1, 2), 2],  # spawn at height for demo
                   orientation=[0, 1, 0, 0],
                   linear=[2, 0, 0],
                   angular=[0, 0, 0],
