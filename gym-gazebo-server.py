@@ -104,7 +104,6 @@ def reset_alt():
     vel_cmd = Twist()
     vel_cmd.linear.x =0
     vel_cmd.angular.z = 0
-
     vel_pub.publish(vel_cmd)
 
 
