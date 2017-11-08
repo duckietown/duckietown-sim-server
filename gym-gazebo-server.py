@@ -11,7 +11,7 @@ from sensor_msgs.msg import Image, CompressedImage
 from std_srvs.srv import Empty
 import numpy as np
 
-SERVER_PORT=7777
+SERVER_PORT = 7777
 
 # Camera image size
 CAMERA_WIDTH = 100
@@ -20,25 +20,27 @@ CAMERA_HEIGHT = 100
 # Camera image shape
 IMG_SHAPE = (CAMERA_WIDTH, CAMERA_HEIGHT, 3)
 
+
 def sendArray(socket, array):
     """Send a numpy array with metadata over zmq"""
     md = dict(
-        dtype = str(array.dtype),
-        shape = array.shape,
+        dtype=str(array.dtype),
+        shape=array.shape,
     )
     # SNDMORE flag specifies this is a multi-part message
     socket.send_json(md, flags=zmq.SNDMORE)
     return socket.send(array, flags=0, copy=True, track=False)
+
 
 print('Starting up')
 context = zmq.Context()
 socket = context.socket(zmq.PAIR)
 socket.bind("tcp://*:%s" % SERVER_PORT)
 
-
 bridge = CvBridge()
 
 last_good_img = None
+
 
 class ImageStuff():
     def __init__(self):
@@ -59,6 +61,7 @@ class ImageStuff():
 
             self.last_good_img = cv2_img
 
+
 imagestuff = ImageStuff()
 
 rospy.init_node('gym', anonymous=True)
@@ -69,13 +72,14 @@ reset_proxy = rospy.ServiceProxy('/gazebo/reset_world', Empty)
 image_topic = "/duckiebot/camera1/image_raw"
 img_sub = rospy.Subscriber(image_topic, Image, imagestuff.image_callback)
 
-
 # waiting for ROS to connect... TODO solve this with ROS callback
 time.sleep(2)
+
 
 def reset_alt():
     print ("TODO: RESETTING NOT IMPLEMENTED YET")
     pass
+
 
 while True:
     print('Waiting for a command')
@@ -108,7 +112,7 @@ while True:
 
         vel_pub.publish(vel_cmd)
         unpause()
-        time.sleep(.05) # this is hacky as fuck
+        time.sleep(.05)  # this is hacky as fuck
         pause()
     else:
         assert False, "unknown command"
@@ -145,7 +149,7 @@ while True:
     img = cv2.resize(imagestuff.last_good_img, (CAMERA_WIDTH, CAMERA_HEIGHT))
 
     # BGR to RGB
-    img = img[:,:,::-1]
+    img = img[:, :, ::-1]
 
     # to contiguous, otherwise ZMQ will complain
     img = np.ascontiguousarray(img, dtype=np.uint8)
