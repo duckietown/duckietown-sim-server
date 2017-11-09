@@ -97,7 +97,7 @@ time.sleep(2)
 init_state = State.get_state(get_state_proxy, "mybot", "world")
 
 def reset_alt():
-    print ("TODO: RESETTING NOT IMPLEMENTED YET")
+    print ("Resetting world")
 
     set_state_proxy(init_state)
 
@@ -105,6 +105,8 @@ def reset_alt():
     vel_cmd.linear.x =0
     vel_cmd.angular.z = 0
     vel_pub.publish(vel_cmd)
+
+    # TODO: reset duckie positions, or better yet, make the duckies immovable
 
 
 while True:
