@@ -85,7 +85,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -106,7 +106,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <material>
@@ -128,7 +128,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -149,7 +149,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <material>
@@ -171,7 +171,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>1.5 0.5 0.005</size>
+              <size>1.5 0.5 0.001</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -192,7 +192,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>1.5 0.5 0.005</size>
+              <size>1.5 0.5 0.001</size>
             </box>
           </geometry>
           <material>
@@ -214,7 +214,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>1.5 0.5 0.005</size>
+              <size>1.5 0.5 0.001</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -235,7 +235,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>1.5 0.5 0.005</size>
+              <size>1.5 0.5 0.001</size>
             </box>
           </geometry>
           <material>
@@ -257,7 +257,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>1.5 0.5 0.005</size>
+              <size>1.5 0.5 0.001</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -278,7 +278,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>1.5 0.5 0.005</size>
+              <size>1.5 0.5 0.001</size>
             </box>
           </geometry>
           <material>
@@ -300,7 +300,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -321,7 +321,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <material>
@@ -343,7 +343,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -364,7 +364,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <material>
@@ -386,7 +386,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -407,7 +407,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <material>
@@ -429,7 +429,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -450,7 +450,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <material>
@@ -472,7 +472,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -493,7 +493,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <material>
@@ -515,7 +515,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>1.5 0.5 0.005</size>
+              <size>1.5 0.5 0.001</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -536,7 +536,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>1.5 0.5 0.005</size>
+              <size>1.5 0.5 0.001</size>
             </box>
           </geometry>
           <material>
@@ -558,7 +558,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -579,7 +579,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <material>
@@ -601,7 +601,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -622,7 +622,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>0.5 0.5 0.005</size>
+              <size>0.5 0.5 0.001</size>
             </box>
           </geometry>
           <material>
@@ -961,116 +961,12 @@
           </geometry>
         </visual>
         <collision name='upright'>
-          <pose frame=''>0 0 0.5715 0 -0 0</pose>
+          <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>36.9583 3.67575 13.7165</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base'>
-          <pose frame=''>0 0 0.032258 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>36.9583 9.72884 0.774211</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base2'>
-          <pose frame=''>0 0 0.1 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>36.9583 7.80038 1.20005</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base3'>
-          <pose frame=''>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>36.9583 6.00024 1.20005</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='left-angle'>
-          <pose frame=''>0 -0.224 0.2401 0.9 -0 0</pose>
-          <geometry>
-            <box>
-              <size>36.9583 6.00024 0.774211</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='right-angle'>
-          <pose frame=''>0 0.224 0.2401 -0.9 0 0</pose>
-          <geometry>
-            <box>
-              <size>36.9583 6.00024 0.774211</size>
-            </box>
+            <mesh>
+              <uri>model://jersey_barrier/meshes/jersey_barrier.dae</uri>
+              <scale>0.11 0.08333 0.08333</scale>
+            </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1218,116 +1114,12 @@
           </geometry>
         </visual>
         <collision name='upright'>
-          <pose frame=''>0 0 0.5715 0 -0 0</pose>
+          <pose frame=''>0 0 0 0 0 0</pose>
           <geometry>
-            <box>
-              <size>6.66464 3.67575 13.7165</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base'>
-          <pose frame=''>0 0 0.032258 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>6.66464 9.72884 0.774211</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base2'>
-          <pose frame=''>0 0 0.1 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>6.66464 7.80038 1.20005</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base3'>
-          <pose frame=''>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>6.66464 6.00024 1.20005</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='left-angle'>
-          <pose frame=''>0 -0.224 0.2401 0.9 -0 0</pose>
-          <geometry>
-            <box>
-              <size>6.66464 6.00024 0.774211</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='right-angle'>
-          <pose frame=''>0 0.224 0.2401 -0.9 0 0</pose>
-          <geometry>
-            <box>
-              <size>6.66464 6.00024 0.774211</size>
-            </box>
+            <mesh>
+              <uri>model://jersey_barrier/meshes/jersey_barrier.dae</uri>
+              <scale>0.61 0.08333 0.08333</scale>
+            </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1360,116 +1152,12 @@
           </geometry>
         </visual>
         <collision name='upright'>
-          <pose frame=''>0 0 0.5715 0 -0 0</pose>
+          <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>2.47991 0.025524 0.095246</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base'>
-          <pose frame=''>0 0 0.032258 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.067556 0.005376</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base2'>
-          <pose frame=''>0 0 0.1 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.054165 0.008333</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base3'>
-          <pose frame=''>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.041665 0.008333</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='left-angle'>
-          <pose frame=''>0 -0.224 0.2401 0.9 -0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.041665 0.005376</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='right-angle'>
-          <pose frame=''>0 0.224 0.2401 -0.9 0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.041665 0.005376</size>
-            </box>
+            <mesh>
+              <uri>model://jersey_barrier/meshes/jersey_barrier.dae</uri>
+              <scale>0.61 0.08333 0.08333</scale>
+            </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1502,116 +1190,12 @@
           </geometry>
         </visual>
         <collision name='upright'>
-          <pose frame=''>0 0 0.5715 0 -0 0</pose>
+          <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>2.47991 0.025524 0.095246</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base'>
-          <pose frame=''>0 0 0.032258 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.067556 0.005376</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base2'>
-          <pose frame=''>0 0 0.1 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.054165 0.008333</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base3'>
-          <pose frame=''>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.041665 0.008333</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='left-angle'>
-          <pose frame=''>0 -0.224 0.2401 0.9 -0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.041665 0.005376</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='right-angle'>
-          <pose frame=''>0 0.224 0.2401 -0.9 0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.041665 0.005376</size>
-            </box>
+            <mesh>
+              <uri>model://jersey_barrier/meshes/jersey_barrier.dae</uri>
+              <scale>0.61 0.08333 0.08333</scale>
+            </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1644,116 +1228,12 @@
           </geometry>
         </visual>
         <collision name='upright'>
-          <pose frame=''>0 0 0.5715 0 -0 0</pose>
+          <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>2.47991 0.025524 0.095246</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base'>
-          <pose frame=''>0 0 0.032258 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.067556 0.005376</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base2'>
-          <pose frame=''>0 0 0.1 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.054165 0.008333</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='base3'>
-          <pose frame=''>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.041665 0.008333</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='left-angle'>
-          <pose frame=''>0 -0.224 0.2401 0.9 -0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.041665 0.005376</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <collision name='right-angle'>
-          <pose frame=''>0 0.224 0.2401 -0.9 0 0</pose>
-          <geometry>
-            <box>
-              <size>2.47991 0.041665 0.005376</size>
-            </box>
+            <mesh>
+              <uri>model://jersey_barrier/meshes/jersey_barrier.dae</uri>
+              <scale>0.61 0.08333 0.08333</scale>
+            </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
