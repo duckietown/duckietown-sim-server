@@ -1,5 +1,8 @@
 #!/usr/bin/env python2
+import random
+import subprocess
 import cv2
+import signal
 import zmq
 import numpy
 import time
@@ -24,6 +27,14 @@ CAMERA_HEIGHT = 64
 # Camera image shape
 IMG_SHAPE = (CAMERA_WIDTH, CAMERA_HEIGHT, 3)
 
+
+import signal
+import sys
+def signal_handler(signal, frame):
+    print ("exiting")
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
 
 def sendArray(socket, array):
     """Send a numpy array with metadata over zmq"""
@@ -63,7 +74,6 @@ class ImageStuff():
             #
             # cv2.imwrite('camera_image.jpeg', cv2_img)
             self.last_good_img = cv2_img
-
 
 class OdomData():
     def __init__(self):
@@ -109,21 +119,29 @@ def reset_alt():
     # TODO: reset duckie positions, or better yet, make the duckies immovable
 
 
-while True:
-    print('Waiting for a command')
+def poll_socket(socket, timetick = 10):
+    poller = zmq.Poller()
+    poller.register(socket, zmq.POLLIN)
+    # wait up to 10msec
+    try:
+        print("poller ready")
+        while True:
+            obj = dict(poller.poll(timetick))
+            if socket in obj and obj[socket] == zmq.POLLIN:
+                yield socket.recv()
+    except KeyboardInterrupt:
+        print ("stopping server")
+        quit()
 
-    msg = socket.recv_json()
-    print (msg)
-
+def handle_message(msg):
     if msg['command'] == 'reset':
         print('resetting the simulation')
         # reset_proxy()
         reset_alt()
         # let it stabilize # temporary fix for duckiebot being too low
-        unpause()
-        time.sleep(1)
-        state = State.get_state(get_state_proxy, "mybot", "world")
-        pause()
+        # state = State.get_state(get_state_proxy, "mybot", "world")
+        # execute 100 steps (.1 sim second, for stability)
+        subprocess.call(["gz", "world", "-m", "100"])
 
     elif msg['command'] == 'action':
         print('received motor velocities')
@@ -140,10 +158,7 @@ while True:
             vel_cmd.angular.z = 0.3 * right
 
         vel_pub.publish(vel_cmd)
-        unpause()
-        #state = State.get_state(get_state_proxy, "mybot", "world")
-        time.sleep(.05)  # this is hacky as fuck
-        pause()
+        subprocess.call(["gz", "world", "-m", "10"])
     else:
         assert False, "unknown command"
 
@@ -171,4 +186,7 @@ while True:
 
     sendArray(socket, img)
 
-    time.sleep(0.05)
+
+for message in poll_socket(socket):
+    handle_message(message)
+
