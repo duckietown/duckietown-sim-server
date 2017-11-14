@@ -1,18 +1,13 @@
 #!/usr/bin/env python2
-import random
 import subprocess
 import cv2
-import signal
 import zmq
-import numpy
 import time
 import rospy
 from cv_bridge import CvBridge, CvBridgeError
 from gazebo_msgs.srv import GetModelState, SetModelState
 from gazebo_stuff.model_state import State
 from geometry_msgs.msg import Twist
-import gazebo_ros
-import json
 from sensor_msgs.msg import Image, CompressedImage
 from nav_msgs.msg import Odometry
 from std_srvs.srv import Empty
@@ -26,6 +21,8 @@ CAMERA_HEIGHT = 64
 
 # Camera image shape
 IMG_SHAPE = (CAMERA_WIDTH, CAMERA_HEIGHT, 3)
+
+TIME_STEP_LENGTH = 100
 
 
 import signal
@@ -106,10 +103,22 @@ time.sleep(2)
 # Store the initial robot state
 init_state = State.get_state(get_state_proxy, "mybot", "world")
 
+vanilla_state = State()
+vanilla_state.reference_frame = "world"
+vanilla_state.model_name = "mybot"
+vanilla_state.pose.position.x = 1 # IDK why we are starting at (1,1,0), but Yanjun put the road here
+vanilla_state.pose.position.y = 1
+vanilla_state.pose.position.z = .04 # otherwise duckie will fly off if z=0
+vanilla_state.pose.orientation.x = 0
+vanilla_state.pose.orientation.y = 0
+vanilla_state.pose.orientation.z = 1
+
+
 def reset_alt():
     print ("Resetting world")
 
-    set_state_proxy(init_state)
+    # set_state_proxy(init_state)
+    set_state_proxy(vanilla_state)
 
     vel_cmd = Twist()
     vel_cmd.linear.x =0
@@ -128,7 +137,7 @@ def poll_socket(socket, timetick = 10):
         while True:
             obj = dict(poller.poll(timetick))
             if socket in obj and obj[socket] == zmq.POLLIN:
-                yield socket.recv()
+                yield socket.recv_json()
     except KeyboardInterrupt:
         print ("stopping server")
         quit()
@@ -158,7 +167,7 @@ def handle_message(msg):
             vel_cmd.angular.z = 0.3 * right
 
         vel_pub.publish(vel_cmd)
-        subprocess.call(["gz", "world", "-m", "10"])
+        subprocess.call(["gz", "world", "-m", str(TIME_STEP_LENGTH)])
     else:
         assert False, "unknown command"
 
