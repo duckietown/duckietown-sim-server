@@ -1,4 +1,5 @@
 #!/usr/bin/env python2
+
 import subprocess
 import cv2
 import zmq
@@ -12,6 +13,11 @@ from sensor_msgs.msg import Image, CompressedImage
 from nav_msgs.msg import Odometry
 from std_srvs.srv import Empty
 import numpy as np
+
+import pygazebo
+import pygazebo.msg.world_control_pb2
+import trollius
+from trollius import From
 
 SERVER_PORT = 7777
 
@@ -97,6 +103,39 @@ image_topic = "/duckiebot/camera1/image_raw"
 img_sub = rospy.Subscriber(image_topic, Image, imagestuff.image_callback)
 odom_sub = rospy.Subscriber('odom', Odometry, odom_data.odom_callback)
 
+
+
+
+
+
+@trollius.coroutine
+def connect_loop():
+    global publisher
+
+    manager = yield From(pygazebo.connect())
+
+    publisher = yield From(
+        manager.advertise('/gazebo/default/world_control', 'gazebo.msgs.WorldControl')
+    )
+
+@trollius.coroutine
+def step_loop():
+    message = pygazebo.msg.world_control_pb2.WorldControl()
+    message.multi_step = 10
+
+    print('publish')
+    publisher.publish(message)
+
+loop = trollius.get_event_loop()
+loop.run_until_complete(connect_loop())
+
+
+
+
+
+
+
+
 # waiting for ROS to connect... TODO solve this with ROS callback
 time.sleep(2)
 
@@ -167,7 +206,18 @@ def handle_message(msg):
             vel_cmd.angular.z = 0.3 * right
 
         vel_pub.publish(vel_cmd)
-        subprocess.call(["gz", "world", "-m", str(TIME_STEP_LENGTH)])
+
+        startTime = time.time()
+
+        #subprocess.call(["gz", "world", "-m", str(TIME_STEP_LENGTH)])
+
+        loop.run_until_complete(step_loop())
+
+
+        endTime = time.time()
+        callTime = (endTime - startTime) * 1000
+        print('gz call time: %.1f ms' % callTime)
+
     else:
         assert False, "unknown command"
 
@@ -198,4 +248,3 @@ def handle_message(msg):
 
 for message in poll_socket(socket):
     handle_message(message)
-
