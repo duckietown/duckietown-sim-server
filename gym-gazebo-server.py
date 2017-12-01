@@ -1,9 +1,13 @@
 #!/usr/bin/env python2
 
+import signal
+import sys
 import subprocess
+import time
+
+import numpy as np
 import cv2
 import zmq
-import time
 import rospy
 from cv_bridge import CvBridge, CvBridgeError
 from gazebo_msgs.srv import GetModelState, SetModelState
@@ -12,7 +16,6 @@ from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Image, CompressedImage
 from nav_msgs.msg import Odometry
 from std_srvs.srv import Empty
-import numpy as np
 
 import pygazebo
 import pygazebo.msg.world_control_pb2
@@ -28,11 +31,8 @@ CAMERA_HEIGHT = 64
 # Camera image shape
 IMG_SHAPE = (CAMERA_WIDTH, CAMERA_HEIGHT, 3)
 
-TIME_STEP_LENGTH = 100
+TIME_STEP_LENGTH = 10
 
-
-import signal
-import sys
 def signal_handler(signal, frame):
     print ("exiting")
     sys.exit(0)
@@ -59,13 +59,24 @@ bridge = CvBridge()
 
 last_good_img = None
 
+# Number of step messages we've sent to gazebo
+numSteps = 0
+
+# Number of odometry data messages we've received
+numOdoms = 0
+
+# Number of images received
+numImgs = 0
 
 class ImageStuff():
     def __init__(self):
         self.last_good_img = None
 
     def image_callback(self, msg):
-        # print("Received an image!")
+        global numImgs
+        numImgs += 1
+
+        #print("Received an image")
         # setattr(msg, 'encoding', '')
 
         try:
@@ -84,29 +95,15 @@ class OdomData():
         self.orientation = (0, 0, 0, 0)
 
     def odom_callback(self, msg):
+        global numOdoms
+        numOdoms += 1
+
+        #print('Received odometry data')
+
         pos = msg.pose.pose.position
         quat = msg.pose.pose.orientation
         self.position = (pos.x, pos.y, pos.z)
         self.orientation = (quat.x, quat.y, quat.z, quat.w)
-
-imagestuff = ImageStuff()
-odom_data = OdomData()
-
-rospy.init_node('gym', anonymous=True)
-vel_pub = rospy.Publisher('/cmd_vel', Twist, queue_size=5)
-unpause = rospy.ServiceProxy('/gazebo/unpause_physics', Empty)
-pause = rospy.ServiceProxy('/gazebo/pause_physics', Empty)
-# reset_proxy = rospy.ServiceProxy('/gazebo/reset_world', Empty)
-get_state_proxy = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
-set_state_proxy = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
-image_topic = "/duckiebot/camera1/image_raw"
-img_sub = rospy.Subscriber(image_topic, Image, imagestuff.image_callback)
-odom_sub = rospy.Subscriber('odom', Odometry, odom_data.odom_callback)
-
-
-
-
-
 
 @trollius.coroutine
 def connect_loop():
@@ -120,21 +117,34 @@ def connect_loop():
 
 @trollius.coroutine
 def step_loop():
-    message = pygazebo.msg.world_control_pb2.WorldControl()
-    message.multi_step = 10
+    global numSteps
 
-    print('publish')
+    # 100 steps per second, run for 10 steps, hence 1/10th of a second
+    message = pygazebo.msg.world_control_pb2.WorldControl()
+    message.multi_step = TIME_STEP_LENGTH
+
+    print('publishing world control message')
     publisher.publish(message)
 
+    numSteps += 1
+
+imagestuff = ImageStuff()
+odom_data = OdomData()
+
+rospy.init_node('gym', anonymous=True)
+vel_pub = rospy.Publisher('/cmd_vel', Twist, queue_size=5)
+unpause = rospy.ServiceProxy('/gazebo/unpause_physics', Empty)
+pause = rospy.ServiceProxy('/gazebo/pause_physics', Empty)
+# reset_proxy = rospy.ServiceProxy('/gazebo/reset_world', Empty)
+get_state_proxy = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
+set_state_proxy = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
+image_topic = "/duckiebot/camera1/image_raw"
+img_sub = rospy.Subscriber(image_topic, Image, imagestuff.image_callback, tcp_nodelay=True)
+odom_sub = rospy.Subscriber('odom', Odometry, odom_data.odom_callback, tcp_nodelay=True)
+
+# Connect to pygazebo
 loop = trollius.get_event_loop()
 loop.run_until_complete(connect_loop())
-
-
-
-
-
-
-
 
 # waiting for ROS to connect... TODO solve this with ROS callback
 time.sleep(2)
@@ -152,7 +162,6 @@ vanilla_state.pose.orientation.x = 0
 vanilla_state.pose.orientation.y = 0
 vanilla_state.pose.orientation.z = 1
 
-
 def reset_alt():
     print ("Resetting world")
 
@@ -163,9 +172,6 @@ def reset_alt():
     vel_cmd.linear.x =0
     vel_cmd.angular.z = 0
     vel_pub.publish(vel_cmd)
-
-    # TODO: reset duckie positions, or better yet, make the duckies immovable
-
 
 def poll_socket(socket, timetick = 10):
     poller = zmq.Poller()
@@ -188,8 +194,8 @@ def handle_message(msg):
         reset_alt()
         # let it stabilize # temporary fix for duckiebot being too low
         # state = State.get_state(get_state_proxy, "mybot", "world")
-        # execute 100 steps (.1 sim second, for stability)
-        subprocess.call(["gz", "world", "-m", "100"])
+        # execute 100 steps (1 sim second, for stability)
+        #subprocess.call(["gz", "world", "-m", "100"])
 
     elif msg['command'] == 'action':
         print('received motor velocities')
@@ -207,16 +213,8 @@ def handle_message(msg):
 
         vel_pub.publish(vel_cmd)
 
-        startTime = time.time()
-
-        #subprocess.call(["gz", "world", "-m", str(TIME_STEP_LENGTH)])
-
+        # Send a stepping message to Gazebo
         loop.run_until_complete(step_loop())
-
-
-        endTime = time.time()
-        callTime = (endTime - startTime) * 1000
-        print('gz call time: %.1f ms' % callTime)
 
     else:
         assert False, "unknown command"
@@ -244,7 +242,6 @@ def handle_message(msg):
     img = np.ascontiguousarray(img, dtype=np.uint8)
 
     sendArray(socket, img)
-
 
 for message in poll_socket(socket):
     handle_message(message)

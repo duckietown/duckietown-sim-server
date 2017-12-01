@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
 <robot>
 
-
   <gazebo>
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
       <legacyMode>false</legacyMode>
       <alwaysOn>true</alwaysOn>
-      <updateRate>20</updateRate>
+      <updateRate>0</updateRate>
       <leftJoint>left_wheel_hinge</leftJoint>
       <rightJoint>right_wheel_hinge</rightJoint>
       <wheelSeparation>0.4</wheelSeparation>
@@ -37,7 +36,6 @@
     <material>Gazebo/Green</material>
   </gazebo>
 
-
   <gazebo reference="camera">
     <material>Gazebo/Green</material>
     <sensor type="camera" name="camera1">
@@ -56,7 +54,7 @@
       </camera>
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
-        <updateRate>0.0</updateRate>
+        <updateRate>0</updateRate>
         <cameraName>duckiebot/camera1</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
@@ -70,7 +68,6 @@
       </plugin>
     </sensor>
   </gazebo>
-
 
   <gazebo reference="chassis">
       <material>Gazebo/Orange</material>
