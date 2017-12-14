@@ -50,10 +50,12 @@ def sendArray(socket, array):
     return socket.send(array, flags=0, copy=True, track=False)
 
 
-print('Starting up')
+serverPort = int(sys.argv[1]) if len(sys.argv) == 2 else SERVER_PORT
+print('Starting up on port number %s' % serverPort)
 context = zmq.Context()
 socket = context.socket(zmq.PAIR)
-socket.bind("tcp://*:%s" % SERVER_PORT)
+
+socket.bind("tcp://*:%s" % serverPort)
 
 bridge = CvBridge()
 
