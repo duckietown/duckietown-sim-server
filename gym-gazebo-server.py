@@ -162,14 +162,17 @@ vanilla_state.pose.orientation.x = 0
 vanilla_state.pose.orientation.y = 0
 vanilla_state.pose.orientation.z = 1
 
-def reset_alt():
+def reset_alt(alpha=0, dy=0):
     print ("Resetting world")
 
     # set_state_proxy(init_state)
-    set_state_proxy(vanilla_state)
+    state = vanilla_state
+    state.pose.position.y = 1.1 + dy
+    state.pose.orientation.w = alpha
+    set_state_proxy(state)
 
     vel_cmd = Twist()
-    vel_cmd.linear.x =0
+    vel_cmd.linear.x = 0
     vel_cmd.angular.z = 0
     vel_pub.publish(vel_cmd)
 
@@ -191,7 +194,10 @@ def handle_message(msg):
     if msg['command'] == 'reset':
         print('resetting the simulation')
         # reset_proxy()
-        reset_alt()
+        if 'position' in msg:
+            reset_alt(msg['position']['alpha'], msg['position']['dy'])
+        else:
+            reset_alt()
         # let it stabilize # temporary fix for duckiebot being too low
         # state = State.get_state(get_state_proxy, "mybot", "world")
         # execute 100 steps (1 sim second, for stability)
