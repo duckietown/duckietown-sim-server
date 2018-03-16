@@ -23,7 +23,8 @@ catkin_pkg \
 catkin-tools \
 defusedxml \
 pyzmq \
-rospkg
+rospkg \
+pygazebo==3.0.0-2014.1
 ```
 
 ## Build and run duckietown environment with a duckiebot
